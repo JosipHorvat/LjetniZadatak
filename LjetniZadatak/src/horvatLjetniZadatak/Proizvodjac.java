@@ -70,7 +70,21 @@ public class Proizvodjac {
 		this.datumProizvodnje = datumProizvodnje;
 	}
 	
-	
+	@Override
+	public String toString() {
+//		this.sifra = sifra;
+
+		
+		
+		StringBuilder sb = new StringBuilder();
+		sb.append("sifra: "+ sifra + "\n");
+		sb.append("naziv: "+ naziv + "\n");
+		sb.append("tip vozila: "+ tipVozila + "\n");
+		sb.append("Marka vozila: "+ markaVozila + "\n");
+		sb.append("Vozilo proizvedeno: "+datumProizvodnje +"\n");
+		
+		return sb.toString();
+	}
 }
 
 

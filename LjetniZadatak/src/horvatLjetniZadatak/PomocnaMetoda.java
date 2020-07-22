@@ -5,9 +5,47 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.Random;
 
+import java.awt.Desktop;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
+
 import javax.swing.JOptionPane;
 
 public class PomocnaMetoda {
+	
+	public void  gitHubLink() {
+		Desktop d = Desktop.getDesktop();
+	try {
+		d.browse(new URI ("https://github.com/JosipHorvat/LjetniZadatak"));
+	} catch (IOException e) {
+		
+		e.printStackTrace();
+	} catch (URISyntaxException e) {
+		
+		e.printStackTrace();
+	}
+
+	}
+	
+	public static int brojZnamenki(int broj) {
+		int znamenke=0;
+		while(broj>0) {
+			broj=broj/10;
+			znamenke++;
+		}
+		return znamenke;
+	}
+	
+	//METODA SA TECAJA ZA ISPIS REDNIH BROJEVA SA PRAZNINAMA (001, 002, __3)
+	public static String vodecePraznine(int broj) {
+		String praznine="";
+		while(broj>0) {
+			broj=broj/10;
+			praznine+=" ";
+		}
+		return praznine;
+	}
 
 
 	// RANDOM BOOLEAN 
@@ -50,6 +88,20 @@ public class PomocnaMetoda {
 
 		
 	}
+	public static LocalDate lokalDatum(String poruka, LocalDate localDate) {
+		while(true) {
+	try {
+		DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern(""
+				+ "dd/MM/yyyy");
+		LocalDate date;	
+		return   date = LocalDate.parse(JOptionPane.showInputDialog(poruka,localDate));
+	}catch(DateTimeParseException e) {
+		JOptionPane.showMessageDialog(null, "Krivi unos, pokusaj ponovno!");
+	}
+	}
+
+		
+	}
 	//METODA ZA BROJEVE
 	public static int ucitajBroj(String poruka) {
 		while(true) {
@@ -66,6 +118,18 @@ public class PomocnaMetoda {
 		String s;
 		while(true) {
 			s= JOptionPane.showInputDialog(poruka).toLowerCase();
+			if(s.trim().isEmpty()) {
+				JOptionPane.showMessageDialog(null, "Obavezan unos");
+			continue;
+			}
+			return s;
+		}
+		
+	}
+	public static String ucitajString(String poruka,String trenutno) {
+		String s;
+		while(true) {
+			s= JOptionPane.showInputDialog(poruka,trenutno).toLowerCase();
 			if(s.trim().isEmpty()) {
 				JOptionPane.showMessageDialog(null, "Obavezan unos");
 			continue;
