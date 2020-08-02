@@ -28,6 +28,18 @@ public class PomocnaMetoda {
 
 	}
 	
+	public static boolean metodaZaBrisanje(String poruka) {
+		while(true) {
+		boolean obrisi = false;
+		String brisanje = "da" ;
+		String potvrdi = PomocnaMetoda.ucitajString(poruka).toLowerCase();
+		if(potvrdi.matches(brisanje)) {
+			obrisi = true;
+		}
+		return obrisi;
+		}
+	}
+	
 	public static int brojZnamenki(int broj) {
 		int znamenke=0;
 		while(broj>0) {

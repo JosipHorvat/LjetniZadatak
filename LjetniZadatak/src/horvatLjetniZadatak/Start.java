@@ -38,6 +38,9 @@ public class Start {
 			pregledProizvodjaca();
 			izbornik();
 			break;
+		case 4:
+			obrisiProizvodjaca();
+			break;
 		case 5: 
 		PomocnaMetoda pm = new PomocnaMetoda();
 		   pm.gitHubLink();
@@ -88,8 +91,28 @@ public class Start {
 			System.out.println("**********************************");
 		}
 		
+		
 	}
+	private void obrisiProizvodjaca() {
+		Proizvodjac proizvodjac = odaberiProizvodjaca("Unesi redni broj Proizvodjaca kojeg zelite obrisati");
+		if(proizvodjac==null) {
+			JOptionPane.showMessageDialog(null, "Neispravan redni broj");
+		}
+//		String brisanje = "da";
+//		String potvrdi = PomocnaMetoda.ucitajString("Za potvrdu brisanja upisi DA, otkazi bilo sto").toLowerCase();
+//		if(brisanje.matches(potvrdi)) {
+//			CRUDProizvodjac.delete(proizvodjac.getSifra());		
+//		}
+		if(PomocnaMetoda.metodaZaBrisanje("Za potvrdu brisanja upisi DA, otkazi bilo sto")==true) {
+			CRUDProizvodjac.delete(proizvodjac.getSifra());	
+		}
+	
+		izbornik();
+	}
+	
 	public static void main(String[] args) {
 		new Start();
+		
+		
 	}// zavrsiti pravilno string bilder za proizvodjaca!!
 }
